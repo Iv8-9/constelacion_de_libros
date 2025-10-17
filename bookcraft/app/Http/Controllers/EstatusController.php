@@ -10,11 +10,13 @@ class EstatusController extends Controller
         public function index()
     {
         $estatus = Estatus::all();
+        return $estatus;
     }
 
     public function show(Request $request)
     {
         $estatus = Estatus::where('id',$request->id)->get();
+        return $estatus;
     }
 
     public function store(Request $request)
@@ -26,11 +28,13 @@ class EstatusController extends Controller
         }
         $estatus->estatus = $request->estatus;
         $estatus->save();
+        return "ok";
     }
 
     public function destroy(Request $request)
     {
         $estatus = Estatus::find($request->id);
         $estatus->delete();
+        return "ok";
     }
 }

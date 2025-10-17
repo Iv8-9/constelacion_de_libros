@@ -10,11 +10,13 @@ class LibroController extends Controller
     public function index()
     {
         $libro = Libro::all();
+        return $libro;
     }
 
     public function show(Request $request)
     {
         $libro = Libro::where('id',$request->id)->get();
+        return $libro;
     }
 
     public function store(Request $request)
@@ -30,11 +32,13 @@ class LibroController extends Controller
         $libro->autor = $request->autor;
         $libro->fecha_publicacion = $request->fecha_publicacion;
         $libro->save();
+        return "ok";
     }
 
     public function destroy(Request $request)
     {
         $libro = Libro::find($request->id);
         $libro->delete();
+        return "ok";
     }
 }
