@@ -14,13 +14,11 @@ return new class extends Migration
         Schema::create('resena', function (Blueprint $table) {
             $table->id();
             $table->integer('id_libro')->nullable();
-            $table->integer('id_lector')->nullable();
             $table->text('descripcion')->nullable();
-            $table->text('frase')->nullable();
+            $table->text('frase_favorita')->nullable();
             $table->timestamps();
 
             $table->foreign('id_libro')->references('id')->on('libro');
-            $table->foreign('id_lector')->references('id')->on('users');
         });
     }
 

@@ -11,12 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categoria', function (Blueprint $table) {
+        Schema::create('progreso', function (Blueprint $table) {
             $table->id();
-            $table->text('categoria')->nullable();
-            $table->text('estructura')->nullable();
-            $table->integer('audiencia')->nullable();
+            $table->integer('id_libro')->nullable();
+            $table->integer('id_estatus')->nullable();
+
             $table->timestamps();
+
+            $table->foreign('id_libro')->references('id')->on('libro');
+            $table->foreign('id_estatus')->references('id')->on('estatus');
+
         });
     }
 
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categoria');
+        Schema::dropIfExists('progreso');
     }
 };

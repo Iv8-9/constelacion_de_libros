@@ -11,18 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('progreso', function (Blueprint $table) {
+        Schema::create('des_libro', function (Blueprint $table) {
             $table->id();
             $table->integer('id_libro')->nullable();
-            $table->integer('id_lector')->nullable();
-            $table->integer('id_estatus')->nullable();
+            $table->integer('id_clasificacion')->nullable();
 
             $table->timestamps();
 
             $table->foreign('id_libro')->references('id')->on('libro');
-            $table->foreign('id_estatus')->references('id')->on('estatus');
-            $table->foreign('id_lector')->references('id')->on('users');
-
+            $table->foreign('id_clasificacion')->references('id')->on('clasificacion');
         });
     }
 
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('progreso');
+        Schema::dropIfExists('des_libro');
     }
 };
