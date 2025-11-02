@@ -17,47 +17,40 @@ Route::get('/user', function (Request $request) {
 
 Route::post('login',[LoginController::class, 'login']);
 
-Route::post('categoria/new', [CategoriaController::class, 'store'])->name('categoria/new');
-Route::post('categorias', [CategoriaController::class, 'index']);
-Route::post('categoria', [CategoriaController::class, 'show']);
-Route::post('categoria/update', [CategoriaController::class, 'store']);
-Route::post('categoria/delete', [CategoriaController::class, 'destroy']);
+Route::post('editorial/new', [EditorialController::class, 'store'])->name('editorial/new');
+Route::post('editoriales', [EditorialController::class, 'index'])->name('editoriales');
+Route::post('editorial', [EditorialController::class, 'show'])->name('editorial');
+Route::post('editorial/update', [EditorialController::class, 'store'])->name('editorial/update');
+Route::post('editorial/delete', [EditorialController::class, 'destroy'])->name('editorial/delete');
 
-Route::post('editorial/new', [EditorialController::class, 'store']);
-Route::post('editoriales', [EditorialController::class, 'index']);
-Route::post('editorial', [EditorialController::class, 'show']);
-Route::post('editorial/update', [EditorialController::class, 'store']);
-Route::post('editorial/delete', [EditorialController::class, 'destroy']);
+Route::post('estatus/new', [EstatusController::class, 'store'])->name('estatus/new');
+Route::post('estatus', [EstatusController::class, 'index'])->name('estatus');
+Route::post('estatu', [EstatusController::class, 'show'])->name('estatu');
+Route::post('estatus/update', [EstatusController::class, 'store'])->name('estatus/update');
+Route::post('estatus/delete', [EstatusController::class, 'destroy'])->name('estatus/delete');
 
-Route::post('estatus/new', [EstatusController::class, 'store']);
-Route::post('estatus', [EstatusController::class, 'index']);
-Route::post('estatu', [EstatusController::class, 'show']);
-Route::post('estatus/update', [EstatusController::class, 'store']);
-Route::post('estatus/delete', [EstatusController::class, 'destroy']);
+Route::post('libro/new', [LibroController::class, 'store'])->name('libro/new');
+Route::post('libros', [LibroController::class, 'index'])->name('libros/new');
+Route::post('libro', [LibroController::class, 'show'])->name('libro');
+Route::post('libro/update', [LibroController::class, 'store'])->name('libro/update');
+Route::post('libro/delete', [LibroController::class, 'destroy'])->name('libro/delete');
 
-Route::post('libro/new', [LibroController::class, 'store']);
-Route::post('libros', [LibroController::class, 'index']);
-Route::post('libro', [LibroController::class, 'show']);
-Route::post('libro/update', [LibroController::class, 'store']);
-Route::post('libro/delete', [LibroController::class, 'destroy']);
+Route::post('progeso/new', [ProgresoController::class, 'store'])->name('progeso/new');
+Route::post('progesos', [ProgresoController::class, 'index'])->name('progesos/new');
+Route::post('progeso', [ProgresoController::class, 'show'])->name('progeso');
+Route::post('progeso/update', [ProgresoController::class, 'store'])->name('progeso/update');
+Route::post('progeso/delete', [ProgresoController::class, 'destroy'])->name('progeso/delete');
 
-Route::post('progeso/new', [ProgresoController::class, 'store']);
-Route::post('progesos', [ProgresoController::class, 'index']);
-Route::post('progeso', [ProgresoController::class, 'show']);
-Route::post('progeso/update', [ProgresoController::class, 'store']);
-Route::post('progeso/delete', [ProgresoController::class, 'destroy']);
-
-Route::post('resena/new', [ResenaController::class, 'store']);
-Route::post('resenas', [ResenaController::class, 'index']);
-Route::post('resena', [ResenaController::class, 'show']);
-Route::post('resena/update', [ResenaController::class, 'store']);
-Route::post('resena/delete', [ResenaController::class, 'destroy']);
+Route::post('resena/new', [ResenaController::class, 'store'])->name('resena/new');
+Route::post('resenas', [ResenaController::class, 'index'])->name('resenas');
+Route::post('resena', [ResenaController::class, 'show'])->name('resena');
+Route::post('resena/update', [ResenaController::class, 'store'])->name('resena/update');
+Route::post('resena/delete', [ResenaController::class, 'destroy'])->name('resena/delete');
 
 //user 
-Route::post('persona/new', [UsuarioController::class, 'store'])->name('persona/new');
-Route::post('persona/new', [UsuarioController::class, 'store']); 
-Route::post('personas', [UsuarioController::class, 'index']); 
-Route::post('persona', [UsuarioController::class, 'show']); 
-Route::post('persona/update', [UsuarioController::class, 'store']);
-Route::post('persona/delete', [UsuarioController::class, 'destroy']); 
+Route::post('persona/new', [UsuarioController::class, 'store'])->name('editorial/new'); 
+Route::post('personas', [UsuarioController::class, 'index'])->name('personas/new'); 
+Route::post('persona', [UsuarioController::class, 'show'])->name('persona'); 
+Route::post('persona/update', [UsuarioController::class, 'store'])->name('persona/update');
+Route::post('persona/delete', [UsuarioController::class, 'destroy'])->name('persona/delete'); 
 
