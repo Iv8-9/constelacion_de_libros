@@ -8,6 +8,7 @@ use App\Http\Controllers\EstatusController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\ProgresoController;
 use App\Http\Controllers\ResenaController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
@@ -51,3 +52,10 @@ Route::post('resenas', [ResenaController::class, 'index']);
 Route::post('resena', [ResenaController::class, 'show']);
 Route::post('resena/update', [ResenaController::class, 'store']);
 Route::post('resena/delete', [ResenaController::class, 'destroy']);
+
+//user 
+Route::post('personas', [UsuarioController::class, 'index']); 
+Route::post('persona/{id}', [UsuarioController::class, 'show']); 
+Route::post('persona', [UsuarioController::class, 'store']);
+Route::post('persona/delete', [UsuarioController::class, 'destroy']); 
+

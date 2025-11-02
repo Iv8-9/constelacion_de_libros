@@ -10,39 +10,48 @@ class UsuarioController extends Controller
 {
     public function index()
     {
-        $usuario =Usuario::all();
+         $usuario = Usuario::all();
         return $usuario;
+        
     }
 
     public function show(Request $request)
     {
-        $usuario =Usuario::where('id',$request->id)->get();
+        $usuario = usuario::where('id',$request->id)->get();
         return $usuario;
+        
     }
-    
+
     public function store(Request $request)
     {
-        if($request->id == 0){ 
-            $usuario = new Usuario();
-        }else{
-            $usuario = Usuario::find($request->id);
-        }
-        $usuario->name =  $request->name;
-        $usuario->email =  $request->email;
-        $usuario->password = Hash::make($request->password);
+        $usuario = $request->id ? Usuario::find($request->id) : new Usuario();
 
-        $usuario->nombre_lector =  $request->nombre_lector;
-        $usuario->app_lector =  $request->app_lector;
-        $usuario->apm_lector =  $request->apm_lector;
-        $usuario->edad =  $request->edad;
+        if (!$usuario) {
+            return response()->json(['error' => 'Usuario no encontrado'], 404);
+        }
+
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+
+        if ($request->filled('password')) {
+            $usuario->password = Hash::make($request->password);
+        }
+
+        $usuario->app_lector = $request->app_lector;
+        $usuario->apm_lector = $request->apm_lector;
+        $usuario->edad = $request->edad;
+        $usuario->fecha_nacimiento = $request->fecha_nacimiento;
+        $usuario->suscripcion = $request->suscripcion;
+
         $usuario->save();
-        return 'ok';
+
+        return response()->json(['status' => 'ok', 'usuario' => $usuario]);
     }
 
-    public function destroy(Request $request)
+      public function destroy(Request $request)
     {
         $usuario = Usuario::find($request->id);
         $usuario->delete();
-        return 'ok';
+        return "ok";
     }
 }
