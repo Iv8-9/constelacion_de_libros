@@ -10,48 +10,46 @@ class UsuarioController extends Controller
 {
     public function index()
     {
-         $usuario = Usuario::all();
-        return $usuario;
-        
+        $users = Usuario::all();
+        return $users;
     }
 
     public function show(Request $request)
     {
-        $usuario = usuario::where('id',$request->id)->get();
-        return $usuario;
-        
+        $users = Usuario::where('id', $request->id)->get();
+        return $users;
     }
 
     public function store(Request $request)
     {
-        $usuario = $request->id ? Usuario::find($request->id) : new Usuario();
-
-        if (!$usuario) {
-            return response()->json(['error' => 'Usuario no encontrado'], 404);
+        if ($request->id==0) {
+            $users = new Usuario();
+        }else {
+            $users = Usuario::find($request->id);
         }
 
-        $usuario->name = $request->name;
-        $usuario->email = $request->email;
+        $users->name = $request->name;
+        $users->email = $request->email;
 
         if ($request->filled('password')) {
-            $usuario->password = Hash::make($request->password);
+            $users->password = Hash::make($request->password);
         }
 
-        $usuario->app_lector = $request->app_lector;
-        $usuario->apm_lector = $request->apm_lector;
-        $usuario->edad = $request->edad;
-        $usuario->fecha_nacimiento = $request->fecha_nacimiento;
-        $usuario->suscripcion = $request->suscripcion;
+        $users->app_lector = $request->app_lector;
+        $users->apm_lector = $request->apm_lector;
+        $users->edad = $request->edad;
+        $users->fecha_nacimiento = $request->fecha_nacimiento;
+        $users->suscripcion = $request->suscripcion;
 
-        $usuario->save();
+        $users->save();
 
-        return response()->json(['status' => 'ok', 'usuario' => $usuario]);
+        return "ok";
     }
 
-      public function destroy(Request $request)
+    public function destroy(Request $request)
     {
-        $usuario = Usuario::find($request->id);
-        $usuario->delete();
+        $users = Usuario::find($request->id);
+        $users->delete();
         return "ok";
     }
 }

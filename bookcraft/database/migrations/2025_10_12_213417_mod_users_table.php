@@ -9,21 +9,22 @@ return new class extends Migration
 
     public function up(): void
     {
-       Schema::table('users', function (Blueprint $table) {
-            $table->text('nombre_lector')->nullable();
-            $table->text('app_lector')->nullable();
-            $table->text('apm_lector')->nullable();
-            $table->integer('edad')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->text('app_lector');
+            $table->text('apm_lector');
+            $table->integer('edad');
+            $table->text('fecha_nacimiento');
+            $table->boolean('suscripcion')->default(false);
         });
     }
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('nombre_lector');
             $table->dropColumn('app_lector');
             $table->dropColumn('apm_lector');
             $table->dropColumn('edad');
+            $table->dropColumn('fecha_nacimiento');
+            $table->dropColumn('suscripcion');
         });
     }
-        
 };

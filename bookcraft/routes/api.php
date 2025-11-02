@@ -17,7 +17,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('login',[LoginController::class, 'login']);
 
-Route::post('categoria/new', [CategoriaController::class, 'store']);
+Route::post('categoria/new', [CategoriaController::class, 'store'])->name('categoria/new');
 Route::post('categorias', [CategoriaController::class, 'index']);
 Route::post('categoria', [CategoriaController::class, 'show']);
 Route::post('categoria/update', [CategoriaController::class, 'store']);
@@ -54,8 +54,10 @@ Route::post('resena/update', [ResenaController::class, 'store']);
 Route::post('resena/delete', [ResenaController::class, 'destroy']);
 
 //user 
+Route::post('persona/new', [UsuarioController::class, 'store'])->name('persona/new');
+Route::post('persona/new', [UsuarioController::class, 'store']); 
 Route::post('personas', [UsuarioController::class, 'index']); 
-Route::post('persona/{id}', [UsuarioController::class, 'show']); 
-Route::post('persona', [UsuarioController::class, 'store']);
+Route::post('persona', [UsuarioController::class, 'show']); 
+Route::post('persona/update', [UsuarioController::class, 'store']);
 Route::post('persona/delete', [UsuarioController::class, 'destroy']); 
 

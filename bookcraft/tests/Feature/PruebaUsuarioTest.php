@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class PruebaUsuarioTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use WithFaker;
 
     public function test_registrarse_con_datos_aleatorios()
     {
@@ -28,17 +28,19 @@ class PruebaUsuarioTest extends TestCase
             'suscripcion' => $this->faker->boolean,
         ];
 
-        $response = $this->post(route('register'), $usuario);
+        $response = $this->post(route('persona/new'), $usuario);
+        $response->assertStatus(200);
+        $response->assertSessionHasNoErrors();
 
-        $response->assertRedirect('/home'); 
-        
 
         $this->assertDatabaseHas('users', [
             'name' => $usuario['name'],
             'email' => $usuario['email'],
             'app_lector' => $usuario['app_lector'],
             'apm_lector' => $usuario['apm_lector'],
-            'edad' => $usuario['edad']
+            'edad' => $usuario['edad'],
+            'fecha_nacimiento' => $usuario['fecha_nacimiento'],
+            'suscripcion' => $usuario['suscripcion']
         ]);
 
         $usuarioCreado = Usuario::where('email', $usuario['email'])->first();

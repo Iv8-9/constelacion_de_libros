@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('editorial', function (Blueprint $table) {
             $table->id();
-            $table->text('nombre_editorial')->nullable();
-            $table->text('calle')->nullable();
-            $table->integer('noExt')->nullable();
-            $table->text('colonia')->nullable();
+            $table->text('nombre_editorial');
+            $table->text('calle');
+            $table->integer('noExt');
+            $table->text('colonia');
             $table->timestamps();
         });
     }

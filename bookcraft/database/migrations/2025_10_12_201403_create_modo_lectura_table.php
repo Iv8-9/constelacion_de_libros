@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tipo_libro', function (Blueprint $table) {
+        Schema::create('modo_lectura', function (Blueprint $table) {
             $table->id();
-            $table->text('tipo')->nullable();
+            $table->text('modo');
             $table->timestamps();
         });
     }
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tipo_libro');
+        Schema::dropIfExists('modo_lectura');
     }
 };

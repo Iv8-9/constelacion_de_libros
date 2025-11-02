@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('progreso', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_libro')->nullable();
-            $table->integer('id_estatus')->nullable();
+            $table->integer('id_libro');
+            $table->integer('id_estatus');
 
             $table->timestamps();
 

@@ -13,21 +13,20 @@ return new class extends Migration
     {
         Schema::create('libro', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_categoria')->nullable();
-            $table->integer('id_editorial')->nullable();
-            $table->integer('id_lector')->nullable();
-            $table->integer('id_tipo_libro')->nullable();
-            $table->integer('id_modo_lectura')->nullable();
-            $table->text('nombre_libro')->nullable();
-            $table->text('autor')->nullable();
-            $table->text('no_paginas')->nullable();
-            $table->date('fecha_publicacion')->nullable();
-            $table->text('imagen')->nullable();
-            $table->text('personaje_favorito')->nullable();
-            $table->text('personaje_odiado')->nullable();
+            $table->integer('id_editorial');
+            $table->integer('id_lector');
+            $table->integer('id_tipo_libro');
+            $table->integer('id_modo_lectura');
+            $table->text('nombre_libro');
+            $table->text('autor');
+            $table->text('categoria');
+            $table->text('no_paginas');
+            $table->date('fecha_publicacion');
+            $table->text('imagen');
+            $table->text('personaje_favorito');
+            $table->text('personaje_odiado');
             $table->timestamps();
-
-            $table->foreign('id_categoria')->references('id')->on('categoria');
+            
             $table->foreign('id_editorial')->references('id')->on('editorial');
             $table->foreign('id_lector')->references('id')->on('users');
             $table->foreign('id_tipo_libro')->references('id')->on('tipo_libro');

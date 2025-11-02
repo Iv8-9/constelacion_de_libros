@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('des_libro', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_libro')->nullable();
-            $table->integer('id_clasificacion')->nullable();
+            $table->integer('id_libro');
+            $table->integer('id_clasificacion');
 
             $table->timestamps();
 
