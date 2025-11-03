@@ -19,6 +19,12 @@ class LibroController extends Controller
         return $libro;
     }
 
+    public function show_libros_lector(Request $request)
+    {
+        $libro = Libro::where('id_lector',$request->id_lector)->get();
+        return $libro;
+    }
+
     public function store(Request $request)
     {
         if($request->id==0){
