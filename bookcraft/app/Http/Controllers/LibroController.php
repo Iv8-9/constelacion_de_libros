@@ -26,11 +26,17 @@ class LibroController extends Controller
         }else{
             $libro = Libro::find($request->id);
         }
-        $libro->id_categoria = $request->id_categoria;
-        $libro->id_editorial = $request->id_editorial;
+        $libro->id_lector = $request->id_lector;
         $libro->nombre_libro = $request->nombre_libro;
         $libro->autor = $request->autor;
-        $libro->fecha_publicacion = $request->fecha_publicacion;
+        $libro->genero = $request->genero;
+        $libro->no_paginas = $request->no_paginas;
+        $libro->fecha_termino = $request->fecha_termino;
+        $libro->imagen = $request->imagen;
+        $libro->personaje_favorito = $request->personaje_favorito;
+        $libro->personaje_odiado = $request->personaje_odiado;
+        $libro->tipo_libro = $request->tipo_libro;
+        $libro->modo_lectura = $request->modo_lectura;
         $libro->save();
         return "ok";
     }

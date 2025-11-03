@@ -11,7 +11,7 @@ use App\Models\DesLibro;
 
 class DesLibroTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use WithFaker;
 
     public function test_crear_descripcion_libro_aleatoria()
     {

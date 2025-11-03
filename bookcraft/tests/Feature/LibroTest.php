@@ -9,44 +9,42 @@ use App\Models\Libro;
 
 class LibroTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use WithFaker;
 
     public function test_crear_libro_aleatorio()
     {
-        $payload = [
-            'id_categoria' => null,
-            'id_editorial' => null,
-            'id_lector' => null,
-            'id_tipo_libro' => null,
-            'id_modo_lectura' => null,
-            'nombre_libro' => $this->faker->sentence(3),
-            'autor' => $this->faker->name,
-            'no_paginas' => (string)$this->faker->numberBetween(50, 1000),
-            'fecha_publicacion' => $this->faker->date(),
-            'imagen' => null,
-            'personaje_favorito' => $this->faker->firstName,
-            'personaje_odiado' => $this->faker->firstName,
-        ];
+        for ($i = 0; $i < 10; $i++) {
+            $libro = [
+                'id_lector' => 3,
+                'nombre_libro' => $this->faker->sentence(3),
+                'autor' => $this->faker->name,
+                'genero' => $this->faker->sentence(3),
+                'no_paginas' => (string)$this->faker->numberBetween(50, 1000),
+                'fecha_termino' => $this->faker->date(),
+                'imagen' => "https://m.media-amazon.com/images/I/719Clw-CptS._SL1000_.jpg",
+                'personaje_favorito' => $this->faker->firstName,
+                'personaje_odiado' => $this->faker->firstName,
+                'tipo_libro' => $this->faker->sentence(),
+                'modo_lectura' => $this->faker->sentence(),
+            ];
 
-        $libro = Libro::create([
-            'id_categoria' => $payload['id_categoria'],
-            'id_editorial' => $payload['id_editorial'],
-            'id_lector' => $payload['id_lector'],
-            'id_tipo_libro' => $payload['id_tipo_libro'],
-            'id_modo_lectura' => $payload['id_modo_lectura'],
-            'nombre_libro' => $payload['nombre_libro'],
-            'autor' => $payload['autor'],
-            'no_paginas' => $payload['no_paginas'],
-            'fecha_publicacion' => $payload['fecha_publicacion'],
-            'imagen' => $payload['imagen'],
-            'personaje_favorito' => $payload['personaje_favorito'],
-            'personaje_odiado' => $payload['personaje_odiado'],
-        ]);
+            $response = $this->postJson(route('libro/new'), $libro);
+            $response->assertStatus(200);
+            $response->assertSessionHasNoErrors();
 
-        $this->assertDatabaseHas('libro', [
-            'id' => $libro->id,
-            'nombre_libro' => $payload['nombre_libro'],
-            'autor' => $payload['autor'],
-        ]);
+            $this->assertDatabaseHas('libro', [
+                'id_lector' => $libro['id_lector'],
+                'nombre_libro' => $libro['nombre_libro'],
+                'autor' => $libro['autor'],
+                'genero' => $libro['genero'],
+                'no_paginas' => $libro['no_paginas'],
+                'fecha_termino' => $libro['fecha_termino'],
+                'imagen' => $libro['imagen'],
+                'personaje_favorito' => $libro['personaje_favorito'],
+                'personaje_odiado' => $libro['personaje_odiado'],
+                'tipo_libro' => $libro['tipo_libro'],
+                'modo_lectura' => $libro['modo_lectura'],
+            ]);
+        }
     }
 }

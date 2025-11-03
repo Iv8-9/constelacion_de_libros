@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\EditorialController;
+use App\Http\Controllers\ClasificacionController;
 use App\Http\Controllers\EstatusController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\ProgresoController;
@@ -17,11 +16,11 @@ Route::get('/user', function (Request $request) {
 
 Route::post('login',[LoginController::class, 'login']);
 
-Route::post('editorial/new', [EditorialController::class, 'store'])->name('editorial/new');
-Route::post('editoriales', [EditorialController::class, 'index'])->name('editoriales');
-Route::post('editorial', [EditorialController::class, 'show'])->name('editorial');
-Route::post('editorial/update', [EditorialController::class, 'store'])->name('editorial/update');
-Route::post('editorial/delete', [EditorialController::class, 'destroy'])->name('editorial/delete');
+Route::post('clasificacion/new', [ClasificacionController::class, 'store'])->name('clasificacion/new');
+Route::post('clasificaciones', [ClasificacionController::class, 'index'])->name('clasificaciones');
+Route::post('clasificacion', [ClasificacionController::class, 'show'])->name('clasificacion');
+Route::post('clasificacion/update', [ClasificacionController::class, 'store'])->name('clasificacion/update');
+Route::post('clasificacion/delete', [ClasificacionController::class, 'destroy'])->name('clasificacion/delete');
 
 Route::post('estatus/new', [EstatusController::class, 'store'])->name('estatus/new');
 Route::post('estatus', [EstatusController::class, 'index'])->name('estatus');
