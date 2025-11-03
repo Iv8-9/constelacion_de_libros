@@ -47,7 +47,7 @@ Route::post('resena/update', [ResenaController::class, 'store'])->name('resena/u
 Route::post('resena/delete', [ResenaController::class, 'destroy'])->name('resena/delete');
 
 //user 
-Route::post('persona/new', [UsuarioController::class, 'store'])->name('editorial/new'); 
+Route::post('persona/new', [UsuarioController::class, 'store'])->name('persona/new'); 
 Route::post('personas', [UsuarioController::class, 'index'])->name('personas/new'); 
 Route::post('persona', [UsuarioController::class, 'show'])->name('persona'); 
 Route::post('persona/update', [UsuarioController::class, 'store'])->name('persona/update');
