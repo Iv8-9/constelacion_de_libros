@@ -31,6 +31,7 @@ Route::post('estatus/delete', [EstatusController::class, 'destroy'])->name('esta
 Route::post('libro/new', [LibroController::class, 'store'])->name('libro/new');
 Route::post('libros', [LibroController::class, 'index'])->name('libros/new');
 Route::post('libro', [LibroController::class, 'show'])->name('libro');
+Route::post('libros/lector', [LibroController::class, 'show_libros_lector'])->name('libros/lector');
 Route::post('libro/update', [LibroController::class, 'store'])->name('libro/update');
 Route::post('libro/delete', [LibroController::class, 'destroy'])->name('libro/delete');
 
@@ -47,7 +48,7 @@ Route::post('resena/update', [ResenaController::class, 'store'])->name('resena/u
 Route::post('resena/delete', [ResenaController::class, 'destroy'])->name('resena/delete');
 
 //user 
-Route::post('persona/new', [UsuarioController::class, 'store'])->name('editorial/new'); 
+Route::post('persona/new', [UsuarioController::class, 'store'])->name('persona/new'); 
 Route::post('personas', [UsuarioController::class, 'index'])->name('personas/new'); 
 Route::post('persona', [UsuarioController::class, 'show'])->name('persona'); 
 Route::post('persona/update', [UsuarioController::class, 'store'])->name('persona/update');
