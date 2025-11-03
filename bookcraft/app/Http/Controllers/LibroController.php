@@ -31,12 +31,14 @@ class LibroController extends Controller
         $libro->autor = $request->autor;
         $libro->genero = $request->genero;
         $libro->no_paginas = $request->no_paginas;
-        $libro->fecha_termino = $request->fecha_termino;
         $libro->imagen = $request->imagen;
         $libro->personaje_favorito = $request->personaje_favorito;
         $libro->personaje_odiado = $request->personaje_odiado;
         $libro->tipo_libro = $request->tipo_libro;
         $libro->modo_lectura = $request->modo_lectura;
+
+        $libro->fecha_publicacion = $request->fecha_publicacion; 
+        $libro->frase_favorita = $request->frase_favorita; // Nuevo 
         $libro->save();
         return "ok";
     }
