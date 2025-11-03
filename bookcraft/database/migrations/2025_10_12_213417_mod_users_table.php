@@ -10,11 +10,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('app_lector');
-            $table->text('apm_lector');
-            $table->integer('edad');
-            $table->text('fecha_nacimiento');
-            $table->boolean('suscripcion')->default(false);
+            $table->text('app_lector')->nullable();
+            $table->text('apm_lector')->nullable();
+            $table->integer('edad')->nullable();
+            $table->text('fecha_nacimiento')->nullable();
+            $table->boolean('suscripcion')->default(false)->nullable();
         });
     }
     public function down(): void
