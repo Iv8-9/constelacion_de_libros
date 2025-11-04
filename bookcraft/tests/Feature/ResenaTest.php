@@ -10,32 +10,24 @@ use App\Models\Resena;
 
 class ResenaTest extends TestCase
 {
-    use RefreshDatabase, WithFaker;
+    use WithFaker;
 
     public function test_crear_resena_aleatoria()
     {
-        // crear libro primero con model
-        $libro = Libro::create([
-            'nombre_libro' => $this->faker->sentence(3),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        $payload = [
-            'id_libro' => $libro->id,
-            'descripcion' => $this->faker->paragraph,
-            'frase_favorita' => $this->faker->sentence,
+        $libro = [
+            'id_libro' => 1,
+            'descripcion' => $this->faker->paragraph(),
+            'resena' => $this->faker->paragraph(),
         ];
 
-        $res = Resena::create([
-            'id_libro' => $payload['id_libro'],
-            'descripcion' => $payload['descripcion'],
-            'frase_favorita' => $payload['frase_favorita'],
-        ]);
+        $response = $this->postJson(route('resena/new'), $libro);
+        $response->assertStatus(200);
+        $response->assertSessionHasNoErrors();
 
         $this->assertDatabaseHas('resena', [
-            'id_libro' => $libro->id,
-            'descripcion' => $payload['descripcion'],
+            'id_libro' => $libro['id_libro'],
+            'descripcion' => $libro['descripcion'],
+            'resena' => $libro['resena'],
         ]);
     }
 }

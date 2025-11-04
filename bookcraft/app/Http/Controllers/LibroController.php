@@ -21,9 +21,25 @@ class LibroController extends Controller
 
     public function show_libros_lector(Request $request)
     {
-        $libro = Libro::where('id_lector',$request->id_lector)->get();
+        $libro = Libro::where('id_lector',$request->id_lector)
+        ->get();
         return $libro;
     }
+
+public function show_libros_resena_lector(Request $request)
+{
+    $libro = Libro::where('libro.id_lector', $request->id_lector)
+        ->leftJoin('resena', 'libro.id', '=', 'resena.id_libro')
+        ->select(
+            'libro.*',
+            'resena.id AS resena_id',
+            'libro.id AS libro_id',
+            'resena.*'
+        )
+        ->get();
+        
+    return $libro;
+}
 
     public function store(Request $request)
     {

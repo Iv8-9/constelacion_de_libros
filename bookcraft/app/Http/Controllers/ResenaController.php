@@ -27,9 +27,8 @@ public function index()
             $resena = Resena::find($request->id);
         }
         $resena->id_libro = $request->id_libro;
-        $resena->id_lector = $request->id_lector;
         $resena->descripcion = $request->descripcion;
-        $resena->frase = $request->frase;
+        $resena->resena = $request->resena;
         $resena->save();
         return "ok";
     }

@@ -19,13 +19,10 @@ return new class extends Migration
             $table->text('genero');
             $table->text('no_paginas');
             $table->date('fecha_publicacion');
-
-            // NUEVAS 
             $table->text('imagen')->nullable();
             $table->text('personaje_favorito')->nullable();
             $table->text('personaje_odiado')->nullable();
             $table->text('frase_favorita')->nullable(); 
-
             $table->text('tipo_libro');
             $table->text('modo_lectura');
             $table->timestamps();

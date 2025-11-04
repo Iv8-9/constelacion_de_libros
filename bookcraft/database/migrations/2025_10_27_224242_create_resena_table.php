@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('id_libro');
             $table->text('descripcion');
-            $table->text('frase_favorita');
+            $table->text('resena');
             $table->timestamps();
 
             $table->foreign('id_libro')->references('id')->on('libro');

@@ -32,6 +32,7 @@ Route::post('libro/new', [LibroController::class, 'store'])->name('libro/new');
 Route::post('libros', [LibroController::class, 'index'])->name('libros/new');
 Route::post('libro', [LibroController::class, 'show'])->name('libro');
 Route::post('libros/lector', [LibroController::class, 'show_libros_lector'])->name('libros/lector');
+Route::post('libros/lector/completo', [LibroController::class, 'show_libros_resena_lector'])->name('libros/lector/completo');
 Route::post('libro/update', [LibroController::class, 'store'])->name('libro/update');
 Route::post('libro/delete', [LibroController::class, 'destroy'])->name('libro/delete');
 
