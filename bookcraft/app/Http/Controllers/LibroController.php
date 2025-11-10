@@ -15,37 +15,50 @@ class LibroController extends Controller
 
     public function show(Request $request)
     {
-        $libro = Libro::where('id',$request->id)->get();
+        $libro = Libro::where('id', $request->id)->get();
         return $libro;
     }
 
     public function show_libros_lector(Request $request)
     {
-        $libro = Libro::where('id_lector',$request->id_lector)
-        ->get();
+        $libro = Libro::where('id_lector', $request->id_lector)
+            ->get();
         return $libro;
     }
 
-public function show_libros_resena_lector(Request $request)
-{
-    $libro = Libro::where('libro.id_lector', $request->id_lector)
-        ->leftJoin('resena', 'libro.id', '=', 'resena.id_libro')
-        ->select(
-            'libro.*',
-            'resena.id AS resena_id',
-            'libro.id AS libro_id',
-            'resena.*'
-        )
-        ->get();
-        
-    return $libro;
-}
+    public function show_libros_resena_lector(Request $request)
+    {
+        $libro = Libro::where('libro.id_lector', $request->id_lector)
+            ->Join('resena', 'libro.id', '=', 'resena.id_libro')
+            ->select(
+                'libro.*',
+                //'resena.id AS resena_id',
+                //'libro.id AS libro_id',
+                'resena.*'
+            )
+            ->get();
+
+        return $libro;
+    }
+
+    public function show_libro_resena(Request $request)
+    {
+        $libro = Libro::where('libro.id', $request->id)
+            ->Join('resena', 'libro.id', '=', 'resena.id_libro')
+            ->select(
+                'libro.*',
+                'resena.*'
+            )
+            ->first();
+
+        return $libro;
+    }
 
     public function store(Request $request)
     {
-        if($request->id==0){
+        if ($request->id == 0) {
             $libro = new Libro();
-        }else{
+        } else {
             $libro = Libro::find($request->id);
         }
         $libro->id_lector = $request->id_lector;
@@ -59,7 +72,7 @@ public function show_libros_resena_lector(Request $request)
         $libro->tipo_libro = $request->tipo_libro;
         $libro->modo_lectura = $request->modo_lectura;
 
-        $libro->fecha_publicacion = $request->fecha_publicacion; 
+        $libro->fecha_publicacion = $request->fecha_publicacion;
         $libro->frase_favorita = $request->frase_favorita; // Nuevo 
         $libro->save();
         return "ok";
