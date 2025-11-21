@@ -1,0 +1,21 @@
+{
+  "name": "constelacion_de_libros",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iv8-9/constelacion_de_libros.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Iv8-9/constelacion_de_libros/issues"
+  },
+  "homepage": "https://github.com/Iv8-9/constelacion_de_libros#readme"
+}

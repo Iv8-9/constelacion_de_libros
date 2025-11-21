@@ -8,7 +8,13 @@ use App\Http\Controllers\LibroController;
 use App\Http\Controllers\ProgresoController;
 use App\Http\Controllers\ResenaController;
 use App\Http\Controllers\UsuarioController;
+
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Middleware\CorsMiddleware;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -56,3 +62,11 @@ Route::post('persona', [UsuarioController::class, 'show'])->name('persona');
 Route::post('persona/update', [UsuarioController::class, 'store'])->name('persona/update');
 Route::post('persona/delete', [UsuarioController::class, 'destroy'])->name('persona/delete'); 
 
+// --- RUTAS DE RECUPERACIÓN DE CONTRASEÑA (PASSWORD RESET) ---
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail']); 
+Route::post('password/reset', [ResetPasswordController::class, 'reset']);
+
+Route::middleware([CorsMiddleware::class])->post('password/email', [PasswordController::class, 'sendResetLinkEmail']);
+//Route::post('password/email', [PasswordController::class, 'sendResetLinkEmail']);
+
+//Route::middleware([CorsMiddleware::class])->post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail']);
